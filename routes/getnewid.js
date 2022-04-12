@@ -1,4 +1,4 @@
-import {} from "../models/requesttracker.js";
+import { RequestTracker } from "../models/requesttracker.js";
 import { OTPMaster } from "../models/otpmaster.js"
 import path from "path";
 
@@ -44,7 +44,7 @@ export default function EndPoint_Get_NewID(req, res) {
         .join(req.headers.host, '/get-key-data', userKey)
         .replaceAll("\\", "/");
 
-    OTPMaster.new(userKey);
+    RequestTracker.new(userKey);
 
     res.status(200).json({
         key: userKey,

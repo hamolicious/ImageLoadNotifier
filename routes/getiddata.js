@@ -1,10 +1,10 @@
-import {} from "../models/requesttracker.js";
+import { RequestTracker } from "../models/requesttracker.js";
 
 export default function EndPoint_Get_IDData(req, res) {
     res.setHeader("Content-Type", "application/json");
 
-    if (.doesExist(req.params.id)) {
-        const data = .getData(req.params.id);
+    if (RequestTracker.doesExist(req.params.id)) {
+        const data = RequestTracker.getData(req.params.id);
         res.status(200).json({ data: data });
         res.end();
         return;

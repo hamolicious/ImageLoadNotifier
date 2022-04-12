@@ -1,4 +1,4 @@
-import {} from "../models/requesttracker.js";
+import { RequestTracker } from "../models/requesttracker.js";
 import path from "path";
 import { OTPMaster } from "../models/otpmaster.js";
 
@@ -21,7 +21,7 @@ export default function EndPoint_Delete_removeID(req, res) {
         return;
     }
 
-    OTPMaster.delete(req.params.id);
+    RequestTracker.delete(req.params.id);
 
     res.status(204);
     res.end();
