@@ -13,9 +13,16 @@ describe('RequestTracker', function() {
         });
 
         it("creates a new entry", function() {
-            requestTracker.new('124')
-            expect(requestTracker._data['124']).to.not.be.empty;
+            requestTracker.new("124");
+            expect(requestTracker._data["124"]).to.not.be.empty;
+        });
+    });
 
+    describe("#delete", function() {
+        it("removes an entry", function() {
+            requestTracker.new('124');
+            requestTracker.delete('124')
+            expect(requestTracker._data["124"]).to.be.undefined;
         });
     });
 

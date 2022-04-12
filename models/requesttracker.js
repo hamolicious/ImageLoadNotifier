@@ -11,6 +11,10 @@ class RequestTracker {
         return this._data[key];
     }
 
+    delete(key) {
+        delete this._data[key];
+    }
+
     new(key) {
         this._data[key] = {
             createdOn: new Date().getTime(),
