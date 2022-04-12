@@ -43,3 +43,11 @@ You can then open the `tempQRCode.png` file and use the [Google Authenticator Ap
 
 ## How to use
 *coming soon, too many changes being made right now*
+
+## TODO
+This is by no way a finished project, there is too much to add. Some of the main features I want to add are:
+ - [ ] A modular reporting system, the ability to write plugins to allow for email, text, discord, etc. reporting.
+ - [ ] A web interface.
+ - [ ] Webhooks
+ - [ ] Multiple requests storage
+ - [ ] Removing unused id's (currently, there is no way to delete a generated key, you have to restart the server 😅)
