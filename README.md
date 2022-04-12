@@ -17,6 +17,7 @@ Social media and most messaging apps have a way of telling whether the recipient
 | `PORT` | Sets the port that the container should run on | n/a |
 | `HOST` | Sets the host that the container should use | n/a |
 | `DISABLE_TOTP` | Disables all TOTP check **not recommended, used for testing only** | `true or false` |
+| `KEEP_QR_CODE` | Disables the deletion of `/get-qr-code` endpoint **not recommended** | `true or false` |
 
 ## Setup
 After starting the server, you should see an output like this:
@@ -30,7 +31,7 @@ Setting up routes...
 Starting server...
 Server listening on port 8080
 ```
-You can then open the `tempQRCode.png` file and use the [Google Authenticator App](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en_GB&gl=US) (GAA) to scan the QR code.
+You can then open the `tempQRCode.png` file (or use `/get-qr/code`) and use the [Google Authenticator App](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en_GB&gl=US) (GAA) to scan the QR code.
 
 ## Endpoints
 | Name | HTTP Verb | Info | OTP Authentication? |
@@ -40,6 +41,7 @@ You can then open the `tempQRCode.png` file and use the [Google Authenticator Ap
 | `/get-id-data/:id` | `GET` | Returns the data for the ID | ❌ |
 | `/delete-id/:id` | `DELETE` | Returns the data for the ID | ✔️ |
 | `/get-all` | `GET` | Returns all data for every ID | ✔️ |
+| `/get-qr-code` | `GET` | Sends back a GAA compatible QR code *only accessible once by default* | ❌ |
 
 ## How to use
 *coming soon, too many changes being made right now*
