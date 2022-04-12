@@ -35,10 +35,12 @@ console.log("Setting up routes...");
 import image from "./routes/image.js";
 import generateKey from "./routes/generatekey.js";
 import getKeyData, { getKeyDataNoIDError } from "./routes/getkeydata.js";
+import removeEntry from "./routes/removekey.js";
 
 app.get("/:id.png", image);
 app.get("/generate-key", generateKey);
 app.get("/get-key-data/:id", getKeyData);
+app.get("/delete-key/:id", removeEntry);
 
 app.get("/get-key-data", getKeyDataNoIDError);
 //#endregion Routing

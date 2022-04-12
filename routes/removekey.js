@@ -1,5 +1,6 @@
 import { requestTracker } from "../models/requesttracker.js";
 import path from "path";
+import { otpMaster } from "../models/otpmaster.js";
 
 export default function removeEntry(req, res) {
     res.setHeader("Content-Type", "application/json");
@@ -20,7 +21,7 @@ export default function removeEntry(req, res) {
         return;
     }
 
-    requestTracker.delete(req.params.key);
+    requestTracker.delete(req.params.id);
 
     res.status(204);
     res.end();
