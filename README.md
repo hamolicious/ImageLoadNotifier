@@ -11,6 +11,13 @@ Social media and most messaging apps have a way of telling whether the recipient
 ## Docker pull
 *coming soon*
 
+# Environment Setup
+| Environment Variable | Description | Constraints |
+| --- | --- | --- |
+| `PORT` | Sets the port that the container should run on | n/a |
+| `HOST` | Sets the host that the container should use | n/a |
+| `DISABLE_TOTP` | Disables all TOTP check **not recommended, used for testing only** | `true or false` |
+
 # Setup
 After starting the server, you should see an output like this:
 ```

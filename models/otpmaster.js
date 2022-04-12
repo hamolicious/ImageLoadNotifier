@@ -1,6 +1,7 @@
 import { authenticator } from "otplib";
 import { writeFileSync } from "fs";
 import QRCode from "qrcode";
+import { config } from "./configmanager.js";
 
 class OTPMaster {
     constructor() {
@@ -14,6 +15,7 @@ class OTPMaster {
     /* c8 ignore start*/
 
     validateOTP(otp) {
+        if (config.disableTOTP) return true
         return authenticator.check(otp, this._secret);
     }
 

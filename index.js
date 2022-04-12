@@ -2,10 +2,11 @@ import express from "express";
 import { readFileSync, existsSync } from "fs";
 import path from "path";
 import { otpMaster } from "./models/otpmaster.js";
+import { config } from "./models/configmanager.js";
 
 const app = express();
-const port = 8080;
-const host = '0.0.0.0';
+const port = config.port;
+const host = config.host;
 const secretKeyPath = "secret.key";
 
 //#region Config
@@ -45,4 +46,5 @@ app.get("/get-key-data", getKeyDataNoIDError);
 console.log("Starting server...");
 app.listen(port, host, () => {
     console.log(`Server listening on port ${port}`);
+    console.log(`Server url http://${host}:${port}/`);
 });
