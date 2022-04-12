@@ -32,7 +32,6 @@ describe('RequestTracker', function() {
         });
     });
 
-
     describe('#doesExist', function() {
         it("returns false if key doesn't exist", function() {
             expect(requestTracker.doesExist("124")).to.be.false;
