@@ -11,16 +11,14 @@ class OTPMaster {
         if (this._secret === "") this._secret = secret;
     }
 
+    /* c8 ignore start*/
+
     validateOTP(otp) {
         return authenticator.check(otp, this._secret);
     }
 
-    generateSecret() {
-        return authenticator.generateSecret(64);
-    }
-
     generateSecretFile() {
-        console.log('Creating file...');
+        console.log("Creating file...");
         const secret = this.generateSecret();
         writeFileSync("secret.key", secret);
         this._secret = secret;
@@ -28,9 +26,15 @@ class OTPMaster {
     }
 
     generateQRCode() {
-        QRCode.toFile('tempQRCode.png', this.generateURI(), function(err) {
+        QRCode.toFile("tempQRCode.png", this.generateURI(), function(err) {
             if (err) throw err;
         });
+    }
+
+    /* c8 ignore end */
+
+    generateSecret() {
+        return authenticator.generateSecret(64);
     }
 
     generateURI() {
