@@ -3,21 +3,20 @@ import { writeFileSync } from "fs";
 import QRCode from "qrcode";
 import { config } from "./configmanager.js";
 
-class OTPMaster {
-    constructor() {
-        this._secret = "";
-    }
+export const OTPMaster = {
+    _secret: "",
 
     setSecret(secret) {
+        /* c8 ignore next 1*/
         if (this._secret === "") this._secret = secret;
-    }
+    },
 
     /* c8 ignore start*/
 
     validateOTP(otp) {
         if (config.disableTOTP) return true
         return authenticator.check(otp, this._secret);
-    }
+    },
 
     generateSecretFile() {
         console.log("Creating file...");
@@ -25,19 +24,19 @@ class OTPMaster {
         writeFileSync("secret.key", secret);
         this._secret = secret;
         console.log("Created file...");
-    }
+    },
 
     generateQRCode() {
         QRCode.toFile("tempQRCode.png", this.generateURI(), function(err) {
             if (err) throw err;
         });
-    }
+    },
 
     /* c8 ignore end */
 
     generateSecret() {
         return authenticator.generateSecret(64);
-    }
+    },
 
     generateURI() {
         //generate qr and put it in session
@@ -46,7 +45,5 @@ class OTPMaster {
             "Email Tracker",
             this._secret
         );
-    }
+    },
 }
-
-export let otpMaster = new OTPMaster();
