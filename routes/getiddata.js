@@ -1,6 +1,6 @@
 import { requestTracker } from "../models/requesttracker.js";
 
-export default function getKeyData(req, res) {
+export default function EndPoint_Get_IDData(req, res) {
     res.setHeader("Content-Type", "application/json");
 
     if (requestTracker.doesExist(req.params.id)) {

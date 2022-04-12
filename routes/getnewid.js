@@ -17,7 +17,7 @@ function generateRandomString(length) {
     return result
 }
 
-export default function generateKey(req, res) {
+export default function EndPoint_Get_NewID(req, res) {
     res.setHeader("Content-Type", "application/json");
 
     if (!req.headers['otp']) {

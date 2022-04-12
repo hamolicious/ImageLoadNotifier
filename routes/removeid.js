@@ -2,7 +2,7 @@ import { requestTracker } from "../models/requesttracker.js";
 import path from "path";
 import { otpMaster } from "../models/otpmaster.js";
 
-export default function removeEntry(req, res) {
+export default function EndPoint_Delete_removeID(req, res) {
     res.setHeader("Content-Type", "application/json");
 
     if (!req.headers["otp"]) {
