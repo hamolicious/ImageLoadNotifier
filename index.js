@@ -1,6 +1,8 @@
 import express from "express";
 import path from "path";
 
+// TODO(hamolicious) convert the rest of the app into an API
+
 const app = express();
 const port = 80;
 const host = '0.0.0.0';
