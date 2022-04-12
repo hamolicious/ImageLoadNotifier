@@ -1,5 +1,5 @@
-import { requestTracker } from "../models/requesttracker.js";
-import { otpMaster } from "../models/otpmaster.js"
+import {} from "../models/requesttracker.js";
+import { OTPMaster } from "../models/otpmaster.js"
 import path from "path";
 
 function generateRandomString(length) {
@@ -28,7 +28,7 @@ export default function EndPoint_Get_NewID(req, res) {
         return;
     }
 
-    if (!otpMaster.validateOTP(req.headers["otp"], 'secret')) {
+    if (!OTPMaster.validateOTP(req.headers["otp"], 'secret')) {
         res.status(401).json({
             message: "OTP was invalid",
         });
@@ -44,7 +44,7 @@ export default function EndPoint_Get_NewID(req, res) {
         .join(req.headers.host, '/get-key-data', userKey)
         .replaceAll("\\", "/");
 
-    requestTracker.new(userKey);
+    OTPMaster.new(userKey);
 
     res.status(200).json({
         key: userKey,

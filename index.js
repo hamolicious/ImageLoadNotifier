@@ -1,7 +1,7 @@
 import express from "express";
 import { readFileSync, existsSync } from "fs";
 import path from "path";
-import { otpMaster } from "./models/otpmaster.js";
+import { OTPMaster } from "./models/otpmaster.js";
 import { config } from "./models/configmanager.js";
 
 const app = express();
@@ -22,11 +22,11 @@ console.log("Setting up OTP...");
 
 if (!existsSync(secretKeyPath)) {
     console.log("Looks like you're missing a secret.key file...");
-    otpMaster.generateSecretFile();
-    otpMaster.generateQRCode();
+    OTPMaster.generateSecretFile();
+    OTPMaster.generateQRCode();
 }
 
-otpMaster.setSecret(readFileSync("secret.key"));
+OTPMaster.setSecret(readFileSync("secret.key"));
 
 //#endregion
 

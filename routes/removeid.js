@@ -1,6 +1,6 @@
-import { requestTracker } from "../models/requesttracker.js";
+import {} from "../models/requesttracker.js";
 import path from "path";
-import { otpMaster } from "../models/otpmaster.js";
+import { OTPMaster } from "../models/otpmaster.js";
 
 export default function EndPoint_Delete_removeID(req, res) {
     res.setHeader("Content-Type", "application/json");
@@ -13,7 +13,7 @@ export default function EndPoint_Delete_removeID(req, res) {
         return;
     }
 
-    if (!otpMaster.validateOTP(req.headers["otp"], "secret")) {
+    if (!OTPMaster.validateOTP(req.headers["otp"], "secret")) {
         res.status(401).json({
             message: "OTP was invalid",
         });
@@ -21,7 +21,7 @@ export default function EndPoint_Delete_removeID(req, res) {
         return;
     }
 
-    requestTracker.delete(req.params.id);
+    OTPMaster.delete(req.params.id);
 
     res.status(204);
     res.end();

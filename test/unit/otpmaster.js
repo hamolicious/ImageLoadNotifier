@@ -1,25 +1,25 @@
 import { expect } from "chai";
-import { otpMaster } from "../../models/otpmaster.js";
+import { OTPMaster } from "../../models/otpmaster.js";
 
 describe('OTPMaster', function() {
     describe("#setSecret", function() {
         it("sets the secret key", function() {
-            otpMaster.setSecret("verysecure");
-            expect(otpMaster._secret).to.equal("verysecure");
+            OTPMaster.setSecret("verysecure");
+            expect(OTPMaster._secret).to.equal("verysecure");
         });
         it("sets the secret key only once", function() {
-            otpMaster.setSecret("verysecure");
-            otpMaster.setSecret("verysecurex2");
-            expect(otpMaster._secret).to.equal("verysecure");
+            OTPMaster.setSecret("verysecure");
+            OTPMaster.setSecret("verysecurex2");
+            expect(OTPMaster._secret).to.equal("verysecure");
         });
     });
 
     describe("#generateSecret", function() {
         it("generates the same length key everytime", function() {
-            const key1 = otpMaster.generateSecret();
-            const key2 = otpMaster.generateSecret();
-            const key3 = otpMaster.generateSecret();
-            const key4 = otpMaster.generateSecret();
+            const key1 = OTPMaster.generateSecret();
+            const key2 = OTPMaster.generateSecret();
+            const key3 = OTPMaster.generateSecret();
+            const key4 = OTPMaster.generateSecret();
 
             expect(key1.length).to.equal(103);
             expect(key2.length).to.equal(103);
@@ -30,7 +30,7 @@ describe('OTPMaster', function() {
 
     describe("#generateURI", function() {
         it("generates a google authenticator compatible link", function() {
-            const uri = otpMaster.generateURI();
+            const uri = OTPMaster.generateURI();
 
             expect(uri).to.equal(
                 "otpauth://totp/Email%20Tracker:notanemail%40gmail.com?secret=verysecure&period=30&digits=6&algorithm=SHA1&issuer=Email%20Tracker"
