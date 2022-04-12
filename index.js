@@ -14,12 +14,13 @@ app.use(express.static(path.join(process.cwd(), "assets/static")));
 //#region Routing
 import image from "./routes/image.js";
 import generateKey from "./routes/generatekey.js";
-import getKeyData, { getKeyDataNoIDRedirect } from "./routes/getkeydata.js";
+import getKeyData, { getKeyDataNoIDError } from "./routes/getkeydata.js";
 
 app.get("/:id.png", image);
 app.get("/generate-key", generateKey);
 app.get("/get-key-data/:id", getKeyData);
-app.get("/get-key-data", getKeyDataNoIDRedirect);
+
+app.get("/get-key-data", getKeyDataNoIDError);
 //#endregion Routing
 
 app.listen(port, host, () => {

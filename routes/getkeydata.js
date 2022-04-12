@@ -15,7 +15,7 @@ export default function getKeyData(req, res) {
     }
 };
 
-export function getKeyDataNoIDRedirect(req, res) {
+export function getKeyDataNoIDError(req, res) {
     res.setHeader("Content-Type", "application/json");
     res.status(400).json({ message: "No ID specified" });
 };
