@@ -50,4 +50,4 @@ This is by no way a finished project, there is too much to add. Some of the main
  - [ ] A web interface.
  - [ ] Webhooks
  - [ ] Multiple requests storage
- - [ ] Removing unused id's (currently, there is no way to delete a generated key, you have to restart the server 😅)
+ - [x] Removing unused id's (currently, there is no way to delete a generated key, you have to restart the server 😅)
