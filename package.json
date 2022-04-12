@@ -1,0 +1,26 @@
+{
+    "name": "imageloadnotifier",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "test": "c8 --100 mocha --recursive"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hamolicious/ImageLoadNotifier.git"
+    },
+    "author": "hamolicious <hamolicious@protonmail.com> (https://github.com/hamolicious)",
+    "license": "WTFPL",
+    "bugs": {
+        "url": "https://github.com/hamolicious/ImageLoadNotifier/issues"
+    },
+    "homepage": "https://github.com/hamolicious/ImageLoadNotifier#readme",
+    "dependencies": {
+        "chai": "^4.3.6",
+        "express": "^4.17.3",
+        "mocha": "^9.2.2",
+        "sinon": "^13.0.1"
+    }
+}
