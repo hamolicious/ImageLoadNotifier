@@ -11,6 +11,10 @@ class RequestTracker {
         return this._data[key];
     }
 
+    getAllData() {
+        return this._data;
+    }
+
     delete(key) {
         delete this._data[key];
     }

@@ -26,6 +26,23 @@ describe('RequestTracker', function() {
         });
     });
 
+
+    describe("#getAllData", function() {
+        it("returns undefined if no data is present", function() {
+            expect(requestTracker.getAllData()).to.be.empty;
+        });
+
+        it("returns data if data is present", function() {
+            requestTracker.new("124");
+            requestTracker.new("435");
+            requestTracker.new("565");
+            expect(requestTracker.getAllData()).to.not.be.empty;
+            expect(requestTracker.getAllData()).to.have.property("124").and.to.have.property("createdOn");
+            expect(requestTracker.getAllData()).to.have.property("435").and.to.have.property("accessedOn");
+            expect(requestTracker.getAllData()).to.have.property("565").and.to.have.property("createdOn");
+        });
+    });
+
     describe("#getData", function() {
         it("returns undefined if no data is present", function() {
             expect(requestTracker.getData('124')).to.be.undefined;
