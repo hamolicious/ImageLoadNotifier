@@ -1,24 +1,24 @@
 # ImageLoadNotifier
 Social media and most messaging apps have a way of telling whether the recipient have read the message. Emails however do not... but what if they did?
 
-# How to run
-## From source
+## How to run
+### From source
 `git clone` this repo and run `node install ; node index.js`
 
-## Docker build
+### Docker build
 `git clone` this repo and run `docker build -t hamolicious/imageloadnotifier:1.0.0 .`, then you can up the image (make sure to forward port `8080` to another port)
 
-## Docker pull
+### Docker pull
 *coming soon*
 
-# Environment Setup
+## Environment Setup
 | Environment Variable | Description | Constraints |
 | --- | --- | --- |
 | `PORT` | Sets the port that the container should run on | n/a |
 | `HOST` | Sets the host that the container should use | n/a |
 | `DISABLE_TOTP` | Disables all TOTP check **not recommended, used for testing only** | `true or false` |
 
-# Setup
+## Setup
 After starting the server, you should see an output like this:
 ```
 Setting up server...
@@ -32,9 +32,9 @@ Server listening on port 8080
 ```
 You can then open the `tempQRCode.png` file and use the [Google Authenticator App](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en_GB&gl=US) (GAA) to scan the QR code.
 
-# How to use
+## How to use
 There are 2 important endpoints:
-## Get `/generate-key`
+### Get `/generate-key`
 Set the `totp` header to the code from the GAA and make a `get` request, you should get something like this back:
 ```json
 {
@@ -46,7 +46,7 @@ Set the `totp` header to the code from the GAA and make a `get` request, you sho
 ```
 You can then embed the image code into an email.
 
-## Get `/get-key-data/:id`
+### Get `/get-key-data/:id`
 `Get` this endpoint like so `/get-key-data/DytUkainXomRjtXqEXMXJsiuajJwNrDtGtWOShjgqiEARwIlhDRKmmfKCSoHoHM`, this will return something like this:
 ```json
 {
@@ -67,7 +67,7 @@ When the image is requested, the data will change to:
 ```
 *Both timestamps are in UTC format.*
 
-# TODO
+## TODO
 This is by no way a finished project, there is too much to add. Some of the main features I want to add are:
  - [ ] A modular reporting system, the ability to write plugins to allow for email, text, discord, etc. reporting.
  - [ ] A web interface.
