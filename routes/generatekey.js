@@ -17,17 +17,22 @@ function generateRandomString(length) {
 }
 
 export default function generateKey(req, res) {
-    const userKey = generateRandomString(64);
+    res.setHeader("Content-Type", "application/json");
 
+    const userKey = generateRandomString(64);
     const imageURL = path
         .join(req.headers.host, userKey + ".png")
+        .replaceAll("\\", "/");
+    const dataURL = path
+        .join(req.headers.host, '/get-key-data', userKey)
         .replaceAll("\\", "/");
 
     requestTracker.new(userKey);
 
-    res.render("generatekey", {
+    res.status(200).json({
         key: userKey,
         link: imageURL,
+        data: dataURL,
         code: `<img src="${imageURL}">`,
     });
 }
