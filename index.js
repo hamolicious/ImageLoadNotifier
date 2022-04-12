@@ -1,7 +1,7 @@
 import express from "express";
 import { readFileSync, existsSync } from "fs";
 import path from "path";
-import { otpMaster } from "./models/otpmaster.js";
+import { OTPMaster } from "./models/otpmaster.js";
 import { config } from "./models/configmanager.js";
 
 const app = express();
@@ -22,27 +22,29 @@ console.log("Setting up OTP...");
 
 if (!existsSync(secretKeyPath)) {
     console.log("Looks like you're missing a secret.key file...");
-    otpMaster.generateSecretFile();
-    otpMaster.generateQRCode();
+    OTPMaster.generateSecretFile();
+    OTPMaster.generateQRCode();
 }
 
-otpMaster.setSecret(readFileSync("secret.key"));
+OTPMaster.setSecret(readFileSync("secret.key"));
 
 //#endregion
 
 //#region Routing
 console.log("Setting up routes...");
-import image from "./routes/image.js";
-import generateKey from "./routes/generatekey.js";
-import getKeyData, { getKeyDataNoIDError } from "./routes/getkeydata.js";
-import removeEntry from "./routes/removekey.js";
+import EndPoint_Get_Image from "./routes/image.js";
+import EndPoint_Get_NewID from "./routes/getnewid.js";
+import EndPoint_Get_IDData, { getKeyDataNoIDError } from "./routes/getiddata.js";
+import EndPoint_Delete_removeID from "./routes/removeid.js";
+import EndPoint_Get_All from "./routes/getall.js";
 
-app.get("/:id.png", image);
-app.get("/generate-key", generateKey);
-app.get("/get-key-data/:id", getKeyData);
-app.get("/delete-key/:id", removeEntry);
+app.get("/:id.png", EndPoint_Get_Image);
+app.get("/get-new-id", EndPoint_Get_NewID);
+app.get("/get-id-data/:id", EndPoint_Get_IDData);
+app.delete("/delete-id/:id", EndPoint_Delete_removeID);
+app.get("/get-all", EndPoint_Get_All);
 
-app.get("/get-key-data", getKeyDataNoIDError);
+app.get("/get-id-data", getKeyDataNoIDError);
 //#endregion Routing
 
 console.log("Starting server...");
