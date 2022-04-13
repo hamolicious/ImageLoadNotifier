@@ -1,8 +1,9 @@
 import express from "express";
-import { readFileSync, existsSync, rmSync } from "fs";
+import { readFileSync, existsSync } from "fs";
 import path from "path";
 import { OTPMaster } from "./models/otpmaster.js";
 import { config } from "./models/configmanager.js";
+import { PluginManager } from "./models/pluginmanager.js";
 
 export const app = express();
 const port = config.port;
@@ -35,6 +36,14 @@ if (!existsSync(secretKeyPath)) {
 OTPMaster.setSecret(readFileSync("secret.key"));
 
 //#endregion
+
+//#region Plugins
+
+console.log("Settings up plugins...");
+const plugins = PluginManager.discoverPlugins();
+PluginManager.loadAllPlugins(plugins);
+
+//#endregion Plugins
 
 //#region Routing
 console.log("Setting up routes...");

@@ -6,6 +6,7 @@ export const config = {
     keepQRCode: toBool(process.env.KEEP_QR_CODE) || false,
     ignoreFirstRequest: toBool(process.env.IGNORE_FIRST_REQUEST) || true,
     nodeEnv: process.env.NODE_ENV,
+    defaultNotifier: process.env.DEFAULT_NOTIFIER || "ConsoleNotifier",
     port: process.env.PORT || 80,
     host: process.env.HOST || "127.0.0.1",
 };
