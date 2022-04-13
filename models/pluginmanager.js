@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync } from 'fs';
 import path from 'path';
+import LoggingManager from './loggingmanager.js';
 
 const isPrototypeOf = Function.call.bind(Object.prototype.isPrototypeOf);
 
@@ -7,7 +8,6 @@ export class BasePlugin {
     description = "Default Plugin";
 
     static loadConfigs() {
-        console.log(process.cwd());
         const rawdata = readFileSync(`./plugins/configs/${this.name}.json`);
         const pluginConfig = JSON.parse(rawdata);
 
@@ -31,6 +31,7 @@ export class BasePlugin {
 
 export const PluginManager = {
     _plugins: {},
+    logger: LoggingManager.register('Plugin'),
 
     getPlugin(name) {
         return this._plugins[name];
@@ -44,6 +45,7 @@ export const PluginManager = {
         if (!isPrototypeOf(BasePlugin, plugin))
             throw new Error("Plugin not of type `BasePlugin`");
         this._plugins[plugin.name] = plugin;
+        this.logger.log(`Registered Plugin: ${plugin.name}`);
         plugin.onRegister();
         return true;
     },
@@ -69,7 +71,7 @@ export const PluginManager = {
         import (modulePath).then(function(value) {
             value.default.onLoad();
             PluginManager.register(value.default);
-            console.log(`Plugin ${value.default.name} has been loaded`);
+            PluginManager.logger.log(`Plugin ${value.default.name} has been loaded`);
         });
     },
 };

@@ -2,9 +2,11 @@ import { authenticator } from "otplib";
 import { writeFileSync } from "fs";
 import QRCode from "qrcode";
 import { config } from "./configmanager.js";
+import LoggingManager from "./loggingmanager.js";
 
 export const OTPMaster = {
     _secret: "",
+    logger: LoggingManager.register('OTP'),
 
     setSecret(secret) {
         /* c8 ignore next 1*/
@@ -19,11 +21,11 @@ export const OTPMaster = {
     },
 
     generateSecretFile() {
-        console.log("Creating file...");
+        this.logger.log("Creating file...");
         const secret = this.generateSecret();
         writeFileSync("secret.key", secret);
         this._secret = secret;
-        console.log("Created file...");
+        this.logger.log("Created file...");
     },
 
     generateQRCode() {
