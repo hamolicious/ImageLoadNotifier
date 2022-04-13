@@ -20,6 +20,7 @@ export const RequestTracker = {
     new(key) {
         this._data[key] = {
             createdOn: new Date().getTime(),
+            accessed: -1,
             requests: []
         }
     },
