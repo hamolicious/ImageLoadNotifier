@@ -4,7 +4,7 @@ import path from "path";
 import { OTPMaster } from "./models/otpmaster.js";
 import { config } from "./models/configmanager.js";
 
-const app = express();
+export const app = express();
 const port = config.port;
 const host = config.host;
 const secretKeyPath = "secret.key";
@@ -56,7 +56,7 @@ app.get("/get-id-data", getKeyDataNoIDError);
 //#endregion Routing
 
 console.log("Starting server...");
-app.listen(port, host, () => {
+export const server = app.listen(port, host, () => {
     console.log(`Server listening on port ${port}`);
     console.log(`Server url http://${host}:${port}/`);
 });

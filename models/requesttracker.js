@@ -21,7 +21,11 @@ export const RequestTracker = {
         this._data[key] = {
             createdOn: new Date().getTime(),
             accessed: -1,
-            requests: []
-        }
+            requests: [],
+        };
     },
-}
+
+    _purgeData() {
+        this._data = {};
+    },
+};

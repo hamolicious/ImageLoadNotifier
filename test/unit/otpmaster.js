@@ -30,6 +30,7 @@ describe('OTPMaster', function() {
 
     describe("#generateURI", function() {
         it("generates a google authenticator compatible link", function() {
+            OTPMaster.setSecret("verysecure");
             const uri = OTPMaster.generateURI();
 
             expect(uri).to.equal(

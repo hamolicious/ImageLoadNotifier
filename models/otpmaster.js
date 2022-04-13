@@ -46,4 +46,9 @@ export const OTPMaster = {
             this._secret
         );
     },
+
+    _purgeData() {
+        this._secret = "";
+    },
+
 }
