@@ -38,7 +38,7 @@ describe('RequestTracker', function() {
             RequestTracker.new("565");
             expect(RequestTracker.getAllData()).to.not.be.empty;
             expect(RequestTracker.getAllData()).to.have.property("124").and.to.have.property("createdOn");
-            expect(RequestTracker.getAllData()).to.have.property("435").and.to.have.property("accessedOn");
+            expect(RequestTracker.getAllData()).to.have.property("435").and.to.have.property("requests");
             expect(RequestTracker.getAllData()).to.have.property("565").and.to.have.property("createdOn");
         });
     });
@@ -52,7 +52,7 @@ describe('RequestTracker', function() {
             RequestTracker.new("124");
             expect(RequestTracker.getData('124')).to.not.be.empty;
             expect(RequestTracker.getData("124")).to.have.property("createdOn");
-            expect(RequestTracker.getData("124")).to.have.property("accessedOn");
+            expect(RequestTracker.getData("124")).to.have.property("requests");
         });
     });
 
