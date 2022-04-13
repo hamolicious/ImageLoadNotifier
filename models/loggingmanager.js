@@ -1,4 +1,4 @@
-import { appendFileSync, truncate } from "fs";
+import { appendFileSync, existsSync, truncate } from "fs";
 import { config } from "./configmanager.js";
 
 const logStack = [];
@@ -19,6 +19,11 @@ export default class LoggingManager {
     //#endregion Instance
 
     static setup() {
+        if (!existsSync(config.logFilePath)) {
+            console.log("[LoggingManager] Looks like you're missing a log file or the path doesn't exist!");
+            throw new Error('No log file');
+        }
+
         if (config.clearLogsOnStart) {
             console.log("[LoggingManager] Clearing log file...");
             truncate(config.logFilePath, 0, function(err) {
