@@ -1,10 +1,20 @@
-import { readdirSync } from 'fs';
+import { readdirSync, readFileSync } from 'fs';
 import path from 'path';
 
 const isPrototypeOf = Function.call.bind(Object.prototype.isPrototypeOf);
 
 export class BasePlugin {
     description = "Default Plugin";
+
+    static loadConfigs() {
+        console.log(process.cwd());
+        const rawdata = readFileSync(`./plugins/configs/${this.name}.json`);
+        const pluginConfig = JSON.parse(rawdata);
+
+        for (let key in pluginConfig) {
+            this[key] = pluginConfig[key];
+        }
+    }
 
     static onRegister() {
         throw new Error("#onRegister() Not Implemented");
