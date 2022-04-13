@@ -6,6 +6,8 @@ import { config } from "./models/configmanager.js";
 import { PluginManager } from "./models/pluginmanager.js";
 import LoggingManager from "./models/loggingmanager.js";
 
+LoggingManager.setup();
+
 export const app = express();
 const port = config.port;
 const host = config.host;

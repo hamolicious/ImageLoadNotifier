@@ -5,8 +5,12 @@ export const config = {
     disableTOTP: toBool(process.env.DISABLE_TOTP) || false,
     keepQRCode: toBool(process.env.KEEP_QR_CODE) || false,
     ignoreFirstRequest: toBool(process.env.IGNORE_FIRST_REQUEST) || true,
-    nodeEnv: process.env.NODE_ENV,
+    clearLogsOnStart: toBool(process.env.CLEAR_LOGS_ON_START) || true,
+
     defaultNotifier: process.env.DEFAULT_NOTIFIER || "ConsoleNotifier",
+    nodeEnv: process.env.NODE_ENV,
+    logFilePath: "./logs/temp.log",
+
     port: process.env.PORT || 80,
     host: process.env.HOST || "127.0.0.1",
 };
