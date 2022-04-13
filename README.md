@@ -49,7 +49,7 @@ You can then open the `tempQRCode.png` file (or use `/get-qr/code`) and use the 
 
 ## TODO
 This is by no way a finished project, there is too much to add. Some of the main features I want to add are:
- - [ ] A modular reporting system, the ability to write plugins to allow for email, text, discord, etc.
+ - [x] A modular reporting system, the ability to write plugins to allow for email, text, discord, etc.
  - [ ] A web interface.
  - [ ] Webhooks
  - [x] Multiple requests storage
