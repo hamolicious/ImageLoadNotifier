@@ -19,6 +19,7 @@ Social media and most messaging apps have a way of telling whether the recipient
 | `DISABLE_TOTP` | Disables all TOTP check **not recommended, used for testing only** | `true or false` |
 | `KEEP_QR_CODE` | Disables the deletion of `/get-qr-code` endpoint **not recommended** | `true or false` |
 | `IGNORE_FIRST_REQUEST` | Ignores the first `get` of the image, used for ignoring bot scanners | `true or false` |
+| `DEFAULT_NOTIFIER` | The class name of the notifier plugin | `any class name within '/plugins/'` |
 
 ## Setup
 After starting the server, you should see an output like this:
