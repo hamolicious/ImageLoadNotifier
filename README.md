@@ -20,6 +20,8 @@ Social media and most messaging apps have a way of telling whether the recipient
 | `KEEP_QR_CODE` | Disables the deletion of `/get-qr-code` endpoint **not recommended** | `true or false` |
 | `IGNORE_FIRST_REQUEST` | Ignores the first `get` of the image, used for ignoring bot scanners | `true or false` |
 | `DEFAULT_NOTIFIER` | The class name of the notifier plugin | `any class name within '/plugins/'` |
+| `CLEAR_LOGS_ON_START` | Sets whether to clear logs upon restart | `true or false` |
+| `LOG_FILE_PATH` | The absolute path to the log file | n/a |
 
 ## Setup
 After starting the server, you should see an output like this:

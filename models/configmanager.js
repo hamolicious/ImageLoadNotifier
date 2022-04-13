@@ -9,7 +9,7 @@ export const config = {
 
     defaultNotifier: process.env.DEFAULT_NOTIFIER || "ConsoleNotifier",
     nodeEnv: process.env.NODE_ENV,
-    logFilePath: "./logs/temp.log",
+    logFilePath: process.env.LOG_FILE_PATH || "./logs/temp.log",
 
     port: process.env.PORT || 80,
     host: process.env.HOST || "127.0.0.1",
