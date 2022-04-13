@@ -1,4 +1,5 @@
 import { BasePlugin } from "../models/pluginmanager.js";
+import { utcTimestampToCurrentTZTime } from "../util/time.js";
 
 export default class ConsoleNotifier extends BasePlugin {
     description = 'Uses the STDOUT to notify of a request'
@@ -7,6 +8,7 @@ export default class ConsoleNotifier extends BasePlugin {
     static onRegister() {}
 
     static onNotify(data) {
-        console.log(`Image Was Accessed @${data.requests[0].timestamp}`);
+        const time = utcTimestampToCurrentTZTime(data.requests[0].timestamp);
+        console.log(`Image Was Accessed on ${time}`);
     }
 }
